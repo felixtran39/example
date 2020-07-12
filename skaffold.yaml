@@ -1,0 +1,20 @@
+apiVersion: skaffold/v2beta6
+kind: Config
+build:
+  artifacts:
+  - image: skaffold-example
+  tagPolicy:
+    userDefined:
+      template: "foo-{{.IMAGE_NAME}}:{{.DATE}}_{{.GIT}}"
+      components:
+      - name: DATE
+        dateTime:
+          format: "2006-01-02"
+          timezone: "UTC"
+      - name: GIT
+        gitCommit:
+          variant: AbbrevCommitSha
+deploy:
+  kubectl:
+    manifests:
+      - k8s-*
