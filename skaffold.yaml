@@ -5,13 +5,13 @@ build:
   - image: skaffold-example
   tagPolicy:
     userDefined:
-      template: "foo-{{.IMAGE_NAME}}:{{.DATE}}_{{.GIT}}"
+      template: "{{.IMAGE_NAME}}:{{.FOO}}_{{.BAR}}"
       components:
-      - name: DATE
+      - name: FOO
         dateTime:
           format: "2006-01-02"
           timezone: "UTC"
-      - name: GIT
+      - name: BAR
         gitCommit:
           variant: AbbrevCommitSha
 deploy:
