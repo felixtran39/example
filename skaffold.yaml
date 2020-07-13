@@ -2,7 +2,7 @@ apiVersion: skaffold/v2beta6
 kind: Config
 build:
   artifacts:
-  - image: skaffold-example
+  - image: felixtran39/skaffold-example
   tagPolicy:
     userDefined:
       template: "{{.IMAGE_NAME}}:{{.FOO}}_{{.BAR}}"
